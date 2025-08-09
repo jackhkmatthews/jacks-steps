@@ -11,9 +11,10 @@ export function Carousel({
   ...rest
 }: {
   title: string;
-  slides: { content: string; likes: number }[];
+  slides: { content: string; author: string; likes: number }[];
 } & ComponentPropsWithoutRef<"div">) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const activeSlide = slides[activeSlideIndex];
   return (
     <div
       style={{
@@ -27,12 +28,14 @@ export function Carousel({
       {...rest}
     >
       <h2>{title}</h2>
-      <Content content={slides[activeSlideIndex].content} />
-      <p>
-        <LikeButton key={activeSlideIndex} />
-        &nbsp;
-        {slides[activeSlideIndex].likes} people like this
-      </p>
+      <div style={{ padding: "1em", border: "solid black" }}>
+        <Content content={activeSlide.content} author={activeSlide.author} />
+        <p>
+          <LikeButton key={activeSlideIndex} />
+          &nbsp;
+          {activeSlide.likes} likes
+        </p>
+      </div>
       <div style={{ display: "flex", gap: "1em" }}>
         <Button
           disabled={activeSlideIndex === 0}

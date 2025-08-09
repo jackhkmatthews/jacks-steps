@@ -2,7 +2,12 @@ import { ComponentPropsWithRef } from "react";
 
 export function Content({
   content,
+  author,
   ...rest
-}: { content: string } & ComponentPropsWithRef<"p">) {
-  return <p {...rest}>{content}</p>;
+}: { content: string; author: string } & ComponentPropsWithRef<"p">) {
+  return (
+    <p {...rest}>
+      {content} - {author}
+    </p>
+  );
 }
