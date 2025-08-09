@@ -1,11 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { ComponentPropsWithoutRef, useState } from "react";
 import { Button } from "./button";
 import { Content } from "./content";
 import { LikeButton } from "./like-button";
 
-export function Carousel({ title, slides, ...rest }) {
+export function Carousel({
+  title,
+  slides,
+  ...rest
+}: {
+  title: string;
+  slides: { content: string; likes: number }[];
+} & ComponentPropsWithoutRef<"div">) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   return (
     <div
