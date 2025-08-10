@@ -2,7 +2,8 @@
   "name": "jacks-steps",
   "scripts": {
     "dev": "next dev",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.13.0",
