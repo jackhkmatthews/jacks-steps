@@ -6,6 +6,8 @@ import {
   nbInternationalProFull,
   nbInternationalProSubset,
 } from "./_global-styles/fonts/fonts";
+import { Footer } from "./footer";
+import { Header } from "./header";
 
 export const metadata: Metadata = {
   title: "Jack's Steps",
@@ -23,7 +25,11 @@ export default function RootLayout({ children }) {
         "antialiased"
       )}
     >
-      <body className={clsx("font-inter")}>{children}</body>
+      <body className={clsx("font-inter flex flex-col gap-6")}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

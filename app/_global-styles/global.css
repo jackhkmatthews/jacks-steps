@@ -6,6 +6,12 @@
     var(--font-nb-international-pro-full), "Arial";
 }
 
+@layer base {
+  a {
+    text-decoration-line: underline;
+  }
+}
+
 body {
   background-color: pink;
   margin: 0;

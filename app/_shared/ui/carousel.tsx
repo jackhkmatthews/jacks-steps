@@ -17,18 +17,9 @@ export function Carousel({
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const activeSlide = slides[activeSlideIndex];
   return (
-    <div
-      style={{
-        backgroundColor: "pink",
-        display: "flex",
-        alignItems: "flex-start",
-        flexDirection: "column",
-        gap: "1em",
-      }}
-      {...rest}
-    >
+    <div className="flex flex-col items-center gap-4" {...rest}>
       <h2 className={clsx("font-nb-international-pro text-2xl")}>{title}</h2>
-      <div style={{ padding: "1em", border: "solid black" }}>
+      <div className="flex flex-col items-start gap-4 border border-black p-4">
         <Content content={activeSlide.content} author={activeSlide.author} />
         <p>
           <LikeButton key={activeSlideIndex} />
