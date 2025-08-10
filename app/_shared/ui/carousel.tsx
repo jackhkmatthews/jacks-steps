@@ -19,7 +19,6 @@ export function Carousel({
     <div
       style={{
         backgroundColor: "pink",
-        padding: "0 1em 1em",
         display: "flex",
         alignItems: "flex-start",
         flexDirection: "column",

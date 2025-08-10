@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { useState } from "react";
 
 export function LikeButton() {
@@ -7,11 +8,10 @@ export function LikeButton() {
   return (
     <button
       onClick={() => setIsLiked((isLiked) => !isLiked)}
-      style={{
-        backgroundColor: isLiked ? "black" : "white",
-        color: isLiked ? "white" : "black",
-        fontWeight: isLiked ? "bold" : "normal",
-      }}
+      className={clsx(
+        "p-2 border border-black",
+        isLiked ? "bg-black text-white font-bold" : "bg-white text-black"
+      )}
     >
       {isLiked ? "Liked " : "Like"} +
     </button>
