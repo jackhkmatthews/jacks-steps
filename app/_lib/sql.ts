@@ -22,10 +22,10 @@ export async function fetchCustomers() {
   }
 }
 
-export async function fetchMonthlyRevenues() {
+export async function fetchMonthlyRevenuesSlow() {
   try {
     console.log("Fetching revenure data...");
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
     const data = await sql<MonthlyRevenue[]>`SELECT * FROM "MonthlyRevenue"`;
     return data;
   } catch (error) {
@@ -34,8 +34,9 @@ export async function fetchMonthlyRevenues() {
   }
 }
 
-export async function fetchLatestInvoices() {
+export async function fetchLatestInvoicesSlowest() {
   try {
+    await new Promise((resolve) => setTimeout(resolve, 4000));
     const data = await sql<Invoice[]>`
       SELECT amount, id, status, date
       FROM "Invoice"
