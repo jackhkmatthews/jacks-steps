@@ -1,7 +1,11 @@
 import { Metadata } from "next";
 import clsx from "clsx";
 import "@/app/_global-styles/global.css";
-import { inter, nbInternationalPro } from "./_global-styles/fonts/fonts";
+import {
+  inter,
+  nbInternationalProFull,
+  nbInternationalProSubset,
+} from "./_global-styles/fonts/fonts";
 
 export const metadata: Metadata = {
   title: "Jack's Steps",
@@ -14,7 +18,8 @@ export default function RootLayout({ children }) {
       lang="en"
       className={clsx(
         inter.variable,
-        nbInternationalPro.variable,
+        nbInternationalProSubset.variable,
+        nbInternationalProFull.variable,
         "antialiased"
       )}
     >
