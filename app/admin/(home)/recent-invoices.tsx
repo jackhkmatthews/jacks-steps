@@ -1,8 +1,8 @@
 import { fetchLatestInvoicesSlowest } from "@/app/_lib/sql";
-import { unstable_noStore } from "next/cache";
+import { connection } from "next/server";
 
 export async function RecentInvoices() {
-  unstable_noStore();
+  connection();
   const latestInvoices = await fetchLatestInvoicesSlowest();
   return (
     <div className="flex flex-col gap-2">

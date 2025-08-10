@@ -1,8 +1,8 @@
 import { fetchMonthlyRevenuesSlow } from "@/app/_lib/sql";
-import { unstable_noStore } from "next/cache";
+import { connection } from "next/server";
 
 export async function RecentRevenue() {
-  unstable_noStore();
+  connection();
   const monthlyRevenues = await fetchMonthlyRevenuesSlow();
   return (
     <div className="flex flex-col gap-2">
