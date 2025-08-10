@@ -6,7 +6,7 @@ export function Header({ className, ...rest }: ComponentPropsWithRef<"h1">) {
   return (
     <h1 className={clsx(className)} {...rest}>
       <Link href="/" className="text-5xl font-bold font-nb-international-pro">
-        Jack's Steps
+        Jack&apos;s Steps
       </Link>
     </h1>
   );
