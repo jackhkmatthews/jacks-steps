@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { ComponentPropsWithoutRef } from "react";
 
 const links = [
-  { name: "Admin", href: "/admin" },
+  { name: "Home", href: "/admin" },
   { name: "Invoices", href: "/admin/invoices" },
   { name: "Customers", href: "/admin/customers" },
 ];
@@ -17,8 +17,8 @@ export function NavLinks({
 }: ComponentPropsWithoutRef<"nav">) {
   const pathname = usePathname();
   return (
-    <nav className={clsx("flex flex-col", className)} {...rest}>
-      <ol>
+    <nav className={clsx(className)} {...rest}>
+      <ol className="flex gap-4">
         {links.map((link) => (
           <li key={link.href}>
             <Link

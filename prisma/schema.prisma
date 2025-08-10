@@ -14,3 +14,27 @@ model Testimonial {
   author  String
   likes   Int
 }
+
+model Customer {
+  id          Int    @id @default(autoincrement())
+  name        String
+  total_spend Int
+}
+
+model MonthlyRevenue {
+  id      Int    @id @default(autoincrement())
+  month   String
+  revenue Int
+}
+
+enum InvoiceStatus {
+  pending
+  paid
+}
+
+model Invoice {
+  id     Int           @id @default(autoincrement())
+  date   DateTime
+  status InvoiceStatus
+  amount Int
+}

@@ -1,6 +1,5 @@
-import { Header } from "./header";
 import { Carousel } from "@/app/_shared/ui/carousel";
-import prisma from "../lib/prisma";
+import prisma from "@/app/_lib/prisma";
 import Image from "next/image";
 
 export default async function Homepage() {
