@@ -4,6 +4,7 @@ import { ComponentPropsWithoutRef, useState } from "react";
 import { Button } from "./button";
 import { Content } from "./content";
 import { LikeButton } from "./like-button";
+import clsx from "clsx";
 
 export function Carousel({
   title,
@@ -26,7 +27,7 @@ export function Carousel({
       }}
       {...rest}
     >
-      <h2>{title}</h2>
+      <h2 className={clsx("font-nb-international-pro text-2xl")}>{title}</h2>
       <div style={{ padding: "1em", border: "solid black" }}>
         <Content content={activeSlide.content} author={activeSlide.author} />
         <p>

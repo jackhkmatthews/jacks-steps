@@ -1,0 +1,58 @@
+/* 
+
+Inter-subset include less chars and are quicker to load. When the browser encounters a char which is missing, it will fetch the full font. This rarely happens.
+
+Really important to use
+
+font-display: block
+
+on the subset, and
+
+font-display: swap
+
+on the full font. This will ensure that the text is always visible, even if the full font is still loading.
+
+Subsets created with 
+pyftsubset public/fonts/Inter/InterVariable.woff2 --output-file=InterVariable-subset.woff2 \
+  --unicodes="U+0000-007F"
+  --layout-features="*"
+  --flavor="woff2"
+  --no-hinting
+  --no-layout-closure
+*/
+
+@font-face {
+  font-family: NBInternationalPro-subset;
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("/fonts/NBInternationalPro/NBInternationalProRegular-subset.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: NBInternationalPro-subset;
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+  src: url("/fonts/NBInternationalPro/NBInternationalProBold-subset.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: NBInternationalPro;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/NBInternationalPro/NBInternationalProRegular.woff2")
+    format("woff2");
+}
+
+@font-face {
+  font-family: NBInternationalPro;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/NBInternationalPro/NBInternationalProBold.woff2")
+    format("woff2");
+}
