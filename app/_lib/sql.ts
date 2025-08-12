@@ -49,3 +49,19 @@ export async function fetchLatestInvoicesSlowest() {
     throw new Error("Failed to fetch the latest invoices.");
   }
 }
+
+export async function fetchInvoices(limit: number) {
+  try {
+    console.log("fetching invoices");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const data = await sql<Invoice[]>`
+      SELECT amount, id, status, date
+      FROM "Invoice"
+      ORDER BY RANDOM()
+      LIMIT ${limit}`;
+    return data;
+  } catch (error) {
+    console.error("Database Error:", error);
+    throw new Error("Failed to fetch the latest invoices.");
+  }
+}

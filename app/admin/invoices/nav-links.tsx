@@ -6,9 +6,8 @@ import { usePathname } from "next/navigation";
 import { ComponentPropsWithoutRef } from "react";
 
 const links = [
-  { name: "Home", href: "/admin" },
-  { name: "Invoices", href: "/admin/invoices" },
-  { name: "Customers", href: "/admin/customers" },
+  { name: "All", href: "/admin/invoices" },
+  { name: "Create", href: "/admin/invoices/create" },
 ];
 
 export function NavLinks({
@@ -23,12 +22,7 @@ export function NavLinks({
           <li key={link.href}>
             <Link
               href={link.href}
-              className={clsx({
-                "font-bold":
-                  link.href === "/admin"
-                    ? link.href === pathname
-                    : pathname.startsWith(link.href),
-              })}
+              className={clsx({ "font-bold": pathname === link.href })}
             >
               {link.name}
             </Link>

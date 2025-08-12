@@ -1,9 +1,16 @@
+import clsx from "clsx";
 import { ComponentPropsWithoutRef } from "react";
 
-export function Button({ style, ...rest }: ComponentPropsWithoutRef<"button">) {
+export function Button({
+  className,
+  ...rest
+}: ComponentPropsWithoutRef<"button">) {
   return (
     <button
-      style={{ backgroundColor: "yellow", padding: "0.5em", ...style }}
+      className={clsx(
+        "p-2 bg-yellow-400 cursor-pointer disabled:bg-gray-500 disabled:cursor-default",
+        className
+      )}
       {...rest}
     />
   );

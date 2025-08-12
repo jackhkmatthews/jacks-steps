@@ -1,4 +1,5 @@
-import { PrismaClient, type Prisma } from "../generated/prisma";
+import { Prisma, PrismaClient } from "../generated/prisma";
+import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
 
@@ -17,6 +18,14 @@ const testimonalData: Prisma.TestimonialCreateInput[] = [
     content: "Is he still banging on about those steps?",
     likes: 8,
     author: "Laura, London",
+  },
+];
+
+const userData: Prisma.UserCreateInput[] = [
+  {
+    name: "Jack Matthews",
+    email: "jack@gmail.com",
+    password: "wicked",
   },
 ];
 
@@ -110,8 +119,12 @@ export async function main() {
   // for (const mr of revenueData) {
   //   await prisma.monthlyRevenue.create({ data: mr });
   // }
-  for (const i of invoiceData) {
-    await prisma.invoice.create({ data: i });
+  // for (const i of invoiceData) {
+  //   await prisma.invoice.create({ data: i });
+  // }
+  for (const u of userData) {
+    const hashedPassword = await bcrypt.hash("wicked", 10);
+    await prisma.user.create({ data: { ...u, password: hashedPassword } });
   }
 }
 

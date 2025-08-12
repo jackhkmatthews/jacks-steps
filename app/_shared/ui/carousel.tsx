@@ -9,10 +9,12 @@ import clsx from "clsx";
 export function Carousel({
   title,
   slides,
+  likedTestimonialIds,
   ...rest
 }: {
   title: string;
-  slides: { content: string; author: string; likes: number }[];
+  likedTestimonialIds: number[];
+  slides: { content: string; author: string; likes: number; id: number }[];
 } & ComponentPropsWithoutRef<"div">) {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const activeSlide = slides[activeSlideIndex];
@@ -21,11 +23,15 @@ export function Carousel({
       <h2 className={clsx("font-nb-international-pro text-2xl")}>{title}</h2>
       <div className="flex flex-col items-start gap-4 border border-black p-4">
         <Content content={activeSlide.content} author={activeSlide.author} />
-        <p>
-          <LikeButton key={activeSlideIndex} />
+        <div>
+          <LikeButton
+            key={activeSlideIndex}
+            id={activeSlide.id}
+            hasLiked={likedTestimonialIds.includes(activeSlide.id)}
+          />
           &nbsp;
           {activeSlide.likes} likes
-        </p>
+        </div>
       </div>
       <div style={{ display: "flex", gap: "1em" }}>
         <Button

@@ -1,19 +1,24 @@
-"use client";
-
+import { toggleLike } from "@/app/_lib/actions";
 import clsx from "clsx";
-import { useState } from "react";
 
-export function LikeButton() {
-  const [isLiked, setIsLiked] = useState(false);
+export function LikeButton({
+  id,
+  hasLiked,
+}: {
+  id: number;
+  hasLiked: boolean;
+}) {
+  const toggleLikeWithId = toggleLike.bind(null, id);
   return (
-    <button
-      onClick={() => setIsLiked((isLiked) => !isLiked)}
-      className={clsx(
-        "p-2 border border-black",
-        isLiked ? "bg-black text-white font-bold" : "bg-white text-black"
-      )}
-    >
-      {isLiked ? "Liked " : "Like"} +
-    </button>
+    <form action={toggleLikeWithId}>
+      <button
+        className={clsx(
+          "p-2 border border-black",
+          hasLiked ? "bg-black text-white font-bold" : "bg-white text-black"
+        )}
+      >
+        {hasLiked ? "Liked " : "Like"} +
+      </button>
+    </form>
   );
 }
